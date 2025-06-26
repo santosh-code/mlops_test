@@ -17,13 +17,13 @@ stages:
     - data/processed_tweets.csv
     - src/feature_engineering.py
     outs:
-    - data/features.csv
+    - data/features.npz
     - data/labels.csv
     - models/vectorizer.pkl
   train:
     cmd: python src/model_building.py
     deps:
-    - data/features.csv
+    - data/features.npz
     - data/labels.csv
     - src/model_building.py
     outs:
@@ -34,6 +34,6 @@ stages:
   evaluate:
     cmd: python src/model_evaluation.py
     deps:
-    - data/features.csv
+    - data/features.npz
     - models/model.pkl
     - src/model_evaluation.py

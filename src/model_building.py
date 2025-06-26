@@ -2,11 +2,16 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 import pickle
 import json
+from scipy import sparse
 
 def train():
-    X = pd.read_csv("data/features.csv")
-    y = pd.read_csv("data/labels.csv")["emotion"]
+    # Load sparse features
+    X = sparse.load_npz("data/features.npz")
 
+    # Load labels
+    y = pd.read_csv("data/labels.csv")["label"]
+
+    # Train model
     model = LogisticRegression(max_iter=1000)
     model.fit(X, y)
 
