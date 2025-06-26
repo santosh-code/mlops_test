@@ -1,0 +1,13 @@
+schema: '2.0'
+stages:
+  ingest:
+    cmd: python src/data_ingestion.py
+    deps:
+    - path: data/raw_tweets.csv
+      hash: md5
+      md5: 0164d4b3ddd81300bfb0236f71c8525a
+      size: 42526369
+    - path: src/data_ingestion.py
+      hash: md5
+      md5: d41d8cd98f00b204e9800998ecf8427e
+      size: 0
